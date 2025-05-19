@@ -25,6 +25,7 @@ main {
     padding: 2rem;
 
 
+
 }
 
 .controls{
@@ -57,6 +58,7 @@ main {
 }
 
 .empty-card-section{
+
     background-color: white;
     width: max-content;
     padding: 1rem 15rem;
@@ -69,3 +71,53 @@ main {
     font-size: 2rem;
 }
 
+#dialog{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 10px;
+}
+
+::backdrop {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+#dialog-container{
+    padding: 1rem;
+
+}
+
+form {
+    margin-top: 1.3rem;
+    display: flex;
+    flex-direction: column;
+    font-size: 1.3rem;
+    gap: 1.2rem;
+}
+
+form div{
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+#checkbox-div {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+form input{
+    padding:  0.4rem 0.5rem;
+    font-size: 1.3rem;
+
+}
+
+form button {
+    font-size: 1.3rem;
+    padding: 0.4rem 2rem;
+    border: none;
+    border-radius: 5px;
+    align-self: center
+}
