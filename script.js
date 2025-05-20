@@ -5,6 +5,8 @@ const addBtn = document.getElementById('add-new-book')
 const submitBtn = document.getElementById('submit')
 const cardSection = document.getElementById('card-section')
 
+let i = 0
+
 function Books(title, author, pages, readStatus=false){
     this.title = title
     this.author = author
@@ -33,7 +35,9 @@ function renderBooks(){
     
     cardSection.innerHTML = ''
 
-    library.forEach((object) => {
+    let i = 0
+
+    library.forEach((object, index) => {
         const bookContainer = document.createElement('div')
         bookContainer.setAttribute('id', 'book-container')
 
@@ -47,16 +51,38 @@ function renderBooks(){
         bookPages.innerHTML = `<b>Pages:</b> ${object.pages}`
 
         const readBtn = document.createElement('button')
-        readBtn.setAttribute('id', 'read-button')
+        readBtn.classList.add('read-button')
         readBtn.textContent = object.toggleReadStatus()
+        readBtn.addEventListener("click", () => {
+            if (readBtn.textContent === 'Read'){
+                readBtn.textContent = 'Not Read'
+            }
+            else {
+                readBtn.textContent = 'Read'
+            }
+        })
 
         const deleteBtn = document.createElement('button')
-        deleteBtn.setAttribute('id', 'delete-button')
+        // deleteBtn.setAttribute('id', 'delete-button')
+        deleteBtn.classList.add('delete-button')
         deleteBtn.textContent = 'Delete'
 
+        deleteBtn.addEventListener("click", () => {
+            library.splice(index, 1)
+            renderBooks()
+            
+        
+        })
+
         bookContainer.append(bookTitle, bookAuthor, bookPages, readBtn, deleteBtn)
+
+        
         cardSection.append(bookContainer)
+
+        
+
     })
+    
 }
 
 addBtn.addEventListener('click', () => {
