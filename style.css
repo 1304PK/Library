@@ -23,6 +23,7 @@ main {
     display: flex;
     flex-direction: column;
     padding: 2rem;
+    flex: 1;
 
 
 
@@ -120,4 +121,64 @@ form button {
     border: none;
     border-radius: 5px;
     align-self: center
+}
+
+/* BOOK ITEM CONTAINERS */
+
+.card-section{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    column-gap: 2rem;
+    row-gap: 2rem;
+}
+
+#book-container{
+    background-color: white;
+    height: max-content;
+    padding: 1.6rem 1rem;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+}
+
+#book-container h2{
+    margin-bottom: 2rem;
+}
+
+#book-container p {
+    margin-top: 0.3rem;
+    font-size: 1.1rem;
+}
+
+.read-button{
+    background-color: lightgreen;
+    border: none;
+    border-radius: 7px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: 0.4rem 0rem;
+    margin-top: 2rem;
+    transition: transform 0.3s, box-shadow 0.3s;
+
+    &:hover{
+        transform: translateY(-1px);
+        box-shadow: 1px 1px 2px rgb(125, 124, 124);
+    }
+}
+
+.delete-button {
+    background-color: red;
+    border: none;
+    border-radius: 7px;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: 0.4rem 0rem;
+    margin-top: 0.5rem;
+    transition: transform 0.3s, box-shadow 0.3s;
+
+    &:hover{
+        transform: translateY(-1px);
+        box-shadow: 1px 1px 2px rgb(125, 124, 124);
+    }
 }
