@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <title>Library</title>
 </head>
+
 <body>
     <div class="container">
         <header>
@@ -17,7 +19,7 @@
                 <button id="add-new-book">Add New Book</button>
             </div>
 
-            <div class="card-section">
+            <div id="card-section">
                 <div class="empty-card-section">
                     <img src="Assets/book_magnifying_glass.png" alt="book with magnifying glass">
                     <p>Your library is empty</p>
@@ -25,33 +27,36 @@
                 </div>
             </div>
 
-            <dialog id="dialog">
-                <div id="dialog-container">
-                    <h1>Enter Book Info</h1>
-                    <form>
-                        <div>
-                        <label for="title">Title</label>
-                        <input type="text" id="title">
-                    </div>
-                    <div>
-                        <label for="author">Author</label>
-                        <input type="text" id="author">
-                    </div>
-                    <div>
-                        <label for="pages">Pages</label>
-                        <input type="text" id="pages">
-                    </div>
-                    <div id="checkbox-div">
-                        <label for="read-status">Have you read it?</label>
-                        <input type="checkbox" id="read-status">
-                    </div>
-                        <button id="submit">Submit</button>
-                    </form>
-                </div>
             </dialog>
         </main>
     </div>
 
+    <dialog id="dialog">
+        <div id="dialog-container">
+            <h1>Enter Book Info</h1>
+            <form>
+                <div>
+                    <label for="title">Title</label>
+                    <input type="text" id="title" required> 
+                </div>
+                <div>
+                    <label for="author">Author</label>
+                    <input type="text" id="author" required>
+                </div>
+                <div>
+                    <label for="pages">Pages</label>
+                    <input type="text" id="pages" required>
+                </div>
+                <div id="checkbox-div">
+                    <label for="read-status">Have you read it?</label>
+                    <input type="checkbox" id="read-status">
+                </div>
+                <button id="submit">Submit</button>
+            </form>
+        </div>
+    
+
     <script src="script.js"></script>
 </body>
+
 </html>
