@@ -1,62 +1,36 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <title>Library</title>
 </head>
-
 <body>
-    <div class="container">
-        <header>
-            <h1>Library</h1>
-        </header>
+    <header>
+        <h1>Library</h1>
+    </header>
 
-        <main>
-            <div class="controls">
-                <button id="add-new-book">Add New Book</button>
-            </div>
-
-            <div id="card-section">
-                <div class="empty-card-section">
-                    <img src="Assets/book_magnifying_glass.png" alt="book with magnifying glass">
-                    <p>Your library is empty</p>
-                    <p>Add books to your library using the Add button</p>
-                </div>
-            </div>
-
-            </dialog>
-        </main>
-    </div>
-
-    <dialog id="dialog">
-        <div id="dialog-container">
-            <h1>Enter Book Info</h1>
-            <form>
-                <div>
-                    <label for="title">Title</label>
-                    <input type="text" id="title" required> 
-                </div>
-                <div>
-                    <label for="author">Author</label>
-                    <input type="text" id="author" required>
-                </div>
-                <div>
-                    <label for="pages">Pages</label>
-                    <input type="text" id="pages" required>
-                </div>
-                <div id="checkbox-div">
-                    <label for="read-status">Have you read it?</label>
-                    <input type="checkbox" id="read-status">
-                </div>
-                <button id="submit">Submit</button>
-            </form>
+    <main id="books-container">
+        <div class="book">
+            <h1 class="book-name">
+                Book 2
+            </h1>
+            <div class="book-details">
+            <p class="author">Author 2</p>
+            <p class="pages">200</p>
         </div>
-    
+            <button class="read-status">Not Read</button>
+            <button class="delete-book">Delete</button>
 
-    <script src="script.js"></script>
+        </div>
+        
+        
+    </main>
+    <button id="add-book">
+        Add
+    </button>
 </body>
-
 </html>
