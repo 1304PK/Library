@@ -1,184 +1,71 @@
 * {
     padding: 0;
     margin: 0;
-    box-sizing: border-box;
 }
 
-.container {
-    min-height: 100vh;
-    background-color: lightpink;
+
+body{
     display: flex;
     flex-direction: column;
-    background: linear-gradient(135deg, #595959, #C0C0C0);
+    height: 100vmin;
+    background-color: lightpink;
 }
 
 header{
-    background-color: rgb(222, 220, 220);
+    background-color: lightblue;
+    padding: 2vmin 0;
+    font-size: 1.5rem;
     text-align: center;
-    padding: 1rem 0rem;
 }
 
-main {
-    gap: 2rem;
-    display: flex;
-    flex-direction: column;
-    padding: 2rem;
-    flex: 1;
-
-
-
-}
-
-.controls{
-    display: flex;
-    justify-content: center;
-}
-
-.controls button{
-    border: none;
-    background-color: black;
-    color: white;
-    font-size: 1.4rem;
-    padding: 0.7rem 1rem;
-    border-radius: 10px;
-    font-weight: bold;
-    cursor: pointer;
-    border: 2px solid transparent;
-    transition: transform 0.2s, opacity 150ms, border 0.2s;
-
-}
-
-.controls button:hover{
-    transform: translateY(-2px);
-    border: 2px solid white;
-}
-
-.controls button:active{
-    transform: translateY(0);
-    opacity: 0.8;
-}
-
-.empty-card-section{
-
-    background-color: white;
-    width: max-content;
-    padding: 1rem 15rem;
-    border-radius: 10px;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    margin-top: 6rem;
-    text-align: center;
-    font-size: 2rem;
-}
-
-#dialog{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border-radius: 10px;
-}
-
-::backdrop {
-    background-color: rgba(0, 0, 0, 0.5);
-}
-
-#dialog-container{
-    padding: 1rem;
-
-}
-
-form {
-    margin-top: 1.3rem;
-    display: flex;
-    flex-direction: column;
-    font-size: 1.3rem;
-    gap: 1.2rem;
-}
-
-form div{
-    display: flex;
-    flex-direction: column;
-    gap: 0.2rem;
-}
-
-#checkbox-div {
-    display: flex;
-    flex-direction: row;
-    gap: 1rem;
-}
-
-form input{
-    padding:  0.4rem 0.5rem;
-    font-size: 1.3rem;
-
-}
-
-form button {
-    font-size: 1.3rem;
-    padding: 0.4rem 2rem;
-    border: none;
-    border-radius: 5px;
-    align-self: center
-}
-
-/* BOOK ITEM CONTAINERS */
-
-.card-section{
+main{
+    background-color: lightpink;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    column-gap: 2rem;
-    row-gap: 2rem;
+    grid-template-columns: repeat(auto-fill, minmax(30vmin, 1fr));
+    column-gap: 5vmin;
+    row-gap: 10vmin;
+    padding: 7vmin;
 }
 
-#book-container{
+.book{
     background-color: white;
-    height: max-content;
-    padding: 1.6rem 1rem;
+    border-radius: 10px;
+    padding: 3vmin;
     display: flex;
     flex-direction: column;
-    border-radius: 10px;
 }
 
-#book-container h2{
-    margin-bottom: 2rem;
+.book-details{
+    margin-top: 2.5vmin;
+    font-size: 1.3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1vmin
 }
 
-#book-container p {
-    margin-top: 0.3rem;
+.read-status, .delete-book{
     font-size: 1.1rem;
+    font-weight: bold;
+    padding: 0.5vmin 0vmin;
+    border-radius: 8px;
+    border: none;
 }
 
-.read-button{
+.read-status{
+    margin-top: 4vmin;
+    margin-bottom: 1vmin;
     background-color: lightgreen;
-    border: none;
-    border-radius: 7px;
-    font-size: 1.2rem;
-    font-weight: bold;
-    padding: 0.4rem 0rem;
-    margin-top: 2rem;
-    transition: transform 0.3s, box-shadow 0.3s;
-
-    &:hover{
-        transform: translateY(-1px);
-        box-shadow: 1px 1px 2px rgb(125, 124, 124);
-    }
 }
 
-.delete-button {
+.delete-book{
     background-color: red;
-    border: none;
-    border-radius: 7px;
     color: white;
-    font-size: 1.2rem;
-    font-weight: bold;
-    padding: 0.4rem 0rem;
-    margin-top: 0.5rem;
-    transition: transform 0.3s, box-shadow 0.3s;
+}
 
-    &:hover{
-        transform: translateY(-1px);
-        box-shadow: 1px 1px 2px rgb(125, 124, 124);
-    }
+#add-book{
+    position: absolute;
+    top: 5vmin;
+    left: 6vmin;
+    padding: 2vmin;
+    width: min-content;
 }
