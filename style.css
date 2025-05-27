@@ -3,6 +3,9 @@
     margin: 0;
 }
 
+button{
+    cursor: pointer
+}
 
 body{
     display: flex;
@@ -54,12 +57,19 @@ main{
 .read-status{
     margin-top: 4vmin;
     margin-bottom: 1vmin;
-    background-color: lightgreen;
 }
 
 .delete-book{
     background-color: red;
     color: white;
+}
+
+.read{
+    background-color: lightgreen;
+}
+
+.not-read{
+    background-color: yellow;
 }
 
 #add-book{
