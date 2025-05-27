@@ -1,89 +1,91 @@
-library = []
+const books = []
+const bookid = null
 
-const dialog = document.getElementById('dialog')
-const addBtn = document.getElementById('add-new-book')
-const submitBtn = document.getElementById('submit')
-const cardSection = document.getElementById('card-section')
+let bookCounter = 0
 
-let i = 0
+class createBook{
+    constructor(name, author, pages, readStatus){
+        this.id = bookCounter
+        this.name = name
+        this.author = author
+        this.pages = pages
+        this.readStatus = readStatus
+        bookCounter++
+    }
 
-function Books(title, author, pages, readStatus=false){
-    this.title = title
-    this.author = author
-    this.pages = pages
-    this.readStatus = readStatus
-
-    this.toggleReadStatus = function() {
+    checkReadStatus(element){
         if (this.readStatus === true){
-            return 'Read'
+            element.classList.add('read')
+            element.textContent = 'Read'
         }
-        else {
-            return 'Not Read'
+        else{
+            element.classList.add('not-read')
+            element.textContent = 'Not Read'
         }
     }
 }
 
-function addBooks(title, author, pages, readStatus){
-    const book = new Books(title, author, pages, readStatus)
-    library.push(book)
+const addBtn = document.getElementById('add-book')
+const dialog = document.getElementById('add-book-dialog')
+const submitBtn = document.getElementById('submit-book')
+const deleteBtn = document.querySelectorAll('delete-book')
+
+const mainContainer = document.getElementById('books-container')
+
+
+
+function updateBooks(){
+    const bookName = document.getElementById('i_bookname').value
+    const bookAuthor = document.getElementById('i_author').value
+    const bookPages = document.getElementById('i_pages').value
+    const readStatusCheckbox = document.getElementById('i_readstatus').checked
+    
+    const book = new createBook(bookName, bookAuthor, bookPages, readStatusCheckbox)
+    books.push(book)
+}
+
+function init(){
+    // what happens on initialization
+}
+
+function deleteBook(item, button){
+    button.addEventListener('click', () => {
+        books.splice(item.id, 1)
+        renderBooks()
+    })
 }
 
 function renderBooks(){
-    if (!cardSection.classList.contains('card-section')){
-        cardSection.classList.add('card-section')
-    }
-    
-    cardSection.innerHTML = ''
+    mainContainer.innerHTML = ''
+    books.forEach((item) => {
+        const book_container = document.createElement('div')
+        book_container.classList.add('book')
+        const book_name = document.createElement('h1')
+        book_name.textContent = item.name
+        const book_details = document.createElement('div')
+        book_details.classList.add('book-details')
+        const author_name = document.createElement('p')
+        author_name.textContent = item.author
+        const book_pages = document.createElement('p')
+        book_pages.textContent = item.pages
 
-    let i = 0
+        const readstatus_button = document.createElement('button')
+        readstatus_button.classList.add('read-status')
+        item.checkReadStatus(readstatus_button)
 
-    library.forEach((object, index) => {
-        const bookContainer = document.createElement('div')
-        bookContainer.setAttribute('id', 'book-container')
+        const delete_button = document.createElement('button')
+        delete_button.classList.add('delete-book')
+        delete_button.textContent = 'Delete'
+        deleteBook(item, delete_button)
 
-        const bookTitle = document.createElement('h2')
-        bookTitle.textContent = `Title: ${object.title}`
+        book_details.append(author_name, book_pages)
+        book_container.append(book_name, book_details, readstatus_button, delete_button)
 
-        const bookAuthor = document.createElement('p')
-        bookAuthor.innerHTML = `<b>Author:</b> ${object.author}`
-
-        const bookPages = document.createElement('p')
-        bookPages.innerHTML = `<b>Pages:</b> ${object.pages}`
-
-        const readBtn = document.createElement('button')
-        readBtn.classList.add('read-button')
-        readBtn.textContent = object.toggleReadStatus()
-        readBtn.addEventListener("click", () => {
-            if (readBtn.textContent === 'Read'){
-                readBtn.textContent = 'Not Read'
-            }
-            else {
-                readBtn.textContent = 'Read'
-            }
-        })
-
-        const deleteBtn = document.createElement('button')
-        // deleteBtn.setAttribute('id', 'delete-button')
-        deleteBtn.classList.add('delete-button')
-        deleteBtn.textContent = 'Delete'
-
-        deleteBtn.addEventListener("click", () => {
-            library.splice(index, 1)
-            renderBooks()
-            
-        
-        })
-
-        bookContainer.append(bookTitle, bookAuthor, bookPages, readBtn, deleteBtn)
-
-        
-        cardSection.append(bookContainer)
-
-        
-
+        mainContainer.append(book_container)
     })
-    
 }
+
+
 
 addBtn.addEventListener('click', () => {
     dialog.showModal()
@@ -92,13 +94,7 @@ addBtn.addEventListener('click', () => {
 submitBtn.addEventListener('click', (e) => {
     e.preventDefault()
 
-    const title = document.getElementById('title').value
-    const author = document.getElementById('author').value
-    const pages = document.getElementById('pages').value
-    const readCheckBox = document.getElementById('read-status').checked
-    addBooks(title, author, pages, readCheckBox)
-
-
-    renderBooks()
     dialog.close()
+    updateBooks()
+    renderBooks()
 })
