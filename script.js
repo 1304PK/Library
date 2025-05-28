@@ -78,7 +78,6 @@ function toggleReadStatus(item, t_button) {
             t_button.innerHTML = '<i class="fa-solid fa-circle-xmark"></i> Not Read'
             t_button.classList.remove('read')
             t_button.classList.add('not-read')
-
         }
         else {
             item.readStatus = true
