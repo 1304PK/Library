@@ -1,16 +1,13 @@
 const books = []
 const bookid = null
 
-let bookCounter = 0
 
 class createBook{
     constructor(name, author, pages, readStatus){
-        this.id = bookCounter
         this.name = name
         this.author = author
         this.pages = pages
         this.readStatus = readStatus
-        bookCounter++
     }
 
     checkReadStatus(element){
@@ -50,9 +47,9 @@ function init(){
     renderBooks()
 }
 
-function deleteBook(item, button){
+function deleteBook(index, button){
     button.addEventListener('click', () => {
-        books.splice(item.id, 1)
+        books.splice(index, 1)
         renderBooks()
     })
 }
@@ -78,7 +75,7 @@ function toggleReadStatus(item, t_button){
 
 function renderBooks(){
     mainContainer.innerHTML = ''
-    books.forEach((item) => {
+    books.forEach((item, index) => {
         const book_container = document.createElement('div')
         book_container.classList.add('book')
         const book_name = document.createElement('h1')
@@ -98,7 +95,7 @@ function renderBooks(){
         const delete_button = document.createElement('button')
         delete_button.classList.add('delete-book')
         delete_button.textContent = 'Delete'
-        deleteBook(item, delete_button)
+        deleteBook(index, delete_button)
 
         book_details.append(author_name, book_pages)
         book_container.append(book_name, book_details, readstatus_button, delete_button)
@@ -108,17 +105,30 @@ function renderBooks(){
 }
 
 
-
 addBtn.addEventListener('click', () => {
     dialog.showModal()
 })
 
 submitBtn.addEventListener('click', (e) => {
-    e.preventDefault()
+    e.preventDefault() 
 
-    dialog.close()
-    updateBooks()
-    renderBooks()
+    const bookName = document.getElementById('i_bookname').value
+    const bookAuthor = document.getElementById('i_author').value
+    const bookPages = document.getElementById('i_pages').value
+
+
+    if (bookName && bookAuthor && bookPages){
+        dialog.close()
+        updateBooks()
+        renderBooks()
+    }
+    else{
+        alert("Fill in the required details!")
+    }
+    
 })
 
+
 init()
+
+//done
