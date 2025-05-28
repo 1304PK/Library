@@ -5,6 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/5f2fbf2acd.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css">
     <title>Library</title>
 </head>
@@ -14,36 +15,33 @@
     </header>
 
     <main id="books-container">
-        <div class="book">
-            <h1 class="book-name">
-                Book 2
-            </h1>
-            <div class="book-details">
-            <p class="author">Author 2</p>
-            <p class="pages">200</p>
-        </div>
-            <button class="read-status">Not Read</button>
-            <button class="delete-book">Delete</button>
-
-        </div>
-        
-        
+        <!-- Books go in here -->
     </main>
+
+
     <button id="add-book">
-        Add
+        <i class="fa-solid fa-plus"></i>
     </button>
 
     <dialog id="add-book-dialog">
         <h1>Add Book</h1>
         <form>
+            <div>
             <label for="i_bookname">Book Title</label>
             <input type="text" id="i_bookname">
+        </div>
+        <div>
             <label for="i_author">Author Name</label>
             <input type="text" id="i_author">
-            <label for="i_pages"></label>
+        </div>
+        <div>
+            <label for="i_pages">Pages</label>
             <input type="text" id="i_pages">
+        </div>
+        <div id="dialog-checkbox-div">
             <label for="i_readstatus">Read Status</label>
             <input type="checkbox" id="i_readstatus">
+        </div>
             <button id="submit-book">Add</button>
         </form>
     </dialog>
