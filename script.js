@@ -45,7 +45,9 @@ function updateBooks(){
 }
 
 function init(){
-    // what happens on initialization
+    const book = new createBook('Book', 'Author', '100', true)
+    books.push(book)
+    renderBooks()
 }
 
 function deleteBook(item, button){
@@ -53,6 +55,25 @@ function deleteBook(item, button){
         books.splice(item.id, 1)
         renderBooks()
     })
+}
+
+function toggleReadStatus(item, t_button){
+    t_button.addEventListener('click', () => {
+        if (item.readStatus === true){
+            item.readStatus = false
+            t_button.textContent = 'Not Read'
+            t_button.classList.remove('read')
+            t_button.classList.add('not-read')
+
+        }
+        else{
+            item.readStatus = true
+            t_button.textContent = 'Read'
+            t_button.classList.remove('not-read')
+            t_button.classList.add('read')
+        }
+    })
+
 }
 
 function renderBooks(){
@@ -72,6 +93,7 @@ function renderBooks(){
         const readstatus_button = document.createElement('button')
         readstatus_button.classList.add('read-status')
         item.checkReadStatus(readstatus_button)
+        toggleReadStatus(item, readstatus_button)
 
         const delete_button = document.createElement('button')
         delete_button.classList.add('delete-book')
@@ -98,3 +120,5 @@ submitBtn.addEventListener('click', (e) => {
     updateBooks()
     renderBooks()
 })
+
+init()
